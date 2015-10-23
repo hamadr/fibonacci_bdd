@@ -1,13 +1,14 @@
 from behave import *
+from maths.fibonacci import fibonacci
 
-@given(u'I want the number (\d*) fibonacci number')
+@given(u'I want the number {number} fibonacci number')
 def step_impl(context, number):
-        raise NotImplementedError(u'STEP: Given I want the number' + number + ' fibonacci number')
+    context.number = int(number)
 
-@when(u'I launch fibonnaci function')
+@when(u'I launch fibonacci function')
 def step_impl(context):
-        raise NotImplementedError(u'STEP: When I launch fibonnaci function')
+    context.result = fibonacci(context.number)
 
-@then(u'I get (\d*)')
+@then(u'I get {number}')
 def step_impl(context, number):
-        raise NotImplementedError(u'STEP: Then I get ' + number)
+    assert context.result == int(number)
